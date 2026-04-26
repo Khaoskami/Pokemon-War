@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>War of the Indigo Crown — Briefing</title>
+<title>War of the Indigo Crown — Conscript's Field Manual</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Oswald:wght@400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -18,10 +18,13 @@
     --blood-bright: #a52020;
     --stamp: #6a1010;
     --gold: #8b6f3a;
+    --rule: #2a2018;
     --shadow: rgba(20, 16, 12, 0.4);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
 
   body {
     font-family: 'Crimson Pro', Georgia, serif;
@@ -55,20 +58,22 @@
   }
 
   .page {
-    max-width: 780px;
+    max-width: 880px;
     margin: 0 auto;
-    padding: 40px 24px 80px;
+    padding: 24px 20px 80px;
     position: relative;
     z-index: 2;
   }
 
-  /* HEADER */
+  /* ─────────── HEADER ─────────── */
   header {
     border: 3px double var(--ink);
-    padding: 28px 24px 24px;
-    margin-bottom: 28px;
+    padding: 28px 20px 24px;
+    margin-bottom: 32px;
     position: relative;
-    background: linear-gradient(180deg, rgba(122, 24, 24, 0.06), transparent), var(--paper);
+    background:
+      linear-gradient(180deg, rgba(122, 24, 24, 0.06), transparent),
+      var(--paper);
   }
 
   .stamp-row {
@@ -79,7 +84,7 @@
     font-size: 10px;
     letter-spacing: 1.5px;
     color: var(--ink-faded);
-    margin-bottom: 16px;
+    margin-bottom: 18px;
   }
 
   .classification {
@@ -92,12 +97,15 @@
     background: rgba(214, 205, 181, 0.6);
   }
 
-  .doc-id { text-align: right; line-height: 1.4; }
+  .doc-id {
+    text-align: right;
+    line-height: 1.4;
+  }
 
   h1 {
     font-family: 'Oswald', sans-serif;
     font-weight: 700;
-    font-size: clamp(28px, 6vw, 48px);
+    font-size: clamp(32px, 7vw, 54px);
     letter-spacing: 2px;
     text-transform: uppercase;
     line-height: 1;
@@ -109,10 +117,20 @@
   h1 .accent {
     display: block;
     color: var(--blood);
-    font-size: 0.5em;
+    font-size: 0.55em;
     letter-spacing: 8px;
     margin-top: 6px;
     font-weight: 500;
+  }
+
+  .subtitle {
+    text-align: center;
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 16px;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--ink-faded);
   }
 
   .stamp-mark {
@@ -131,279 +149,802 @@
     line-height: 1.2;
     text-align: center;
     background: rgba(214, 205, 181, 0.4);
-    animation: stamp-in 0.8s ease-out 0.3s backwards;
   }
 
-  /* BRIEFING CARD */
-  .briefing {
-    border: 1px solid var(--ink);
-    background: rgba(255, 252, 240, 0.35);
-    padding: 28px 30px;
-    margin-bottom: 24px;
-    box-shadow: 3px 3px 0 var(--shadow);
-    position: relative;
-    animation: fade-up 0.6s ease-out 0.1s backwards;
+  /* ─────────── INTRO BLOCK ─────────── */
+  .intro {
+    border-left: 4px solid var(--blood);
+    padding: 4px 0 4px 20px;
+    margin-bottom: 36px;
+    font-size: 17px;
   }
 
-  .briefing-label {
+  .intro p { margin-bottom: 12px; }
+  .intro p:last-child { margin-bottom: 0; }
+  .intro b { color: var(--blood); }
+
+  /* ─────────── SECTION HEADERS ─────────── */
+  section { margin-bottom: 36px; }
+
+  h2 {
     font-family: 'Oswald', sans-serif;
-    font-size: 11px;
-    letter-spacing: 4px;
+    font-weight: 600;
+    font-size: 24px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--ink);
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  h2 .num {
+    font-family: 'Special Elite', monospace;
     color: var(--blood);
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+  }
+
+  h2 .name { flex: 1; }
+
+  .section-tag {
+    font-family: 'Special Elite', monospace;
+    font-size: 10px;
+    color: var(--ink-faded);
+    letter-spacing: 2px;
     margin-bottom: 16px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--ink-faded);
     text-transform: uppercase;
   }
 
-  .briefing p {
-    font-size: 17px;
-    line-height: 1.75;
-    margin-bottom: 14px;
-    color: var(--ink-soft);
-  }
-
-  .briefing p:last-child { margin-bottom: 0; }
-
-  .briefing strong {
+  h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
     color: var(--blood);
-    font-weight: 600;
+    margin: 18px 0 8px;
   }
 
-  /* DIVIDER */
-  .divider {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin: 28px 0;
-    font-family: 'Special Elite', monospace;
-    font-size: 10px;
-    letter-spacing: 3px;
-    color: var(--ink-faded);
-  }
+  p { margin-bottom: 12px; font-size: 16px; }
 
-  .divider::before,
-  .divider::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--ink-faded);
-  }
-
-  /* DISMISSAL NOTE */
-  .dismissal {
-    border-left: 4px solid var(--gold);
-    background: rgba(139, 111, 58, 0.06);
-    padding: 16px 20px;
-    margin-bottom: 28px;
-    font-size: 15px;
-    color: var(--ink-soft);
-    font-style: italic;
-    animation: fade-up 0.6s ease-out 0.2s backwards;
+  /* ─────────── BOXES ─────────── */
+  .box {
+    border: 1px solid var(--ink);
+    background: rgba(255, 252, 240, 0.4);
+    padding: 16px 18px;
+    margin: 16px 0;
     position: relative;
+    box-shadow: 2px 2px 0 var(--shadow);
   }
 
-  .dismissal::before {
-    content: '◊ AUTHOR\'S NOTE';
+  .box-warning {
+    border-left: 5px solid var(--blood);
+    background: rgba(122, 24, 24, 0.06);
+  }
+
+  .box-warning::before {
+    content: '! WARNING';
+    display: block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--blood);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .box-tip {
+    border-left: 5px solid var(--gold);
+    background: rgba(139, 111, 58, 0.06);
+  }
+
+  .box-tip::before {
+    content: '◊ FIELD NOTE';
     display: block;
     font-family: 'Oswald', sans-serif;
     font-size: 11px;
     letter-spacing: 3px;
     color: var(--gold);
     font-weight: 700;
-    font-style: normal;
     margin-bottom: 8px;
   }
 
-  /* SERVER BLOCK */
-  .server-block {
-    border: 2px solid var(--ink);
-    background: rgba(255, 252, 240, 0.4);
-    padding: 24px;
-    box-shadow: 3px 3px 0 var(--shadow);
-    animation: fade-up 0.6s ease-out 0.3s backwards;
+  /* ─────────── REGION GRID ─────────── */
+  .region-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 18px;
   }
 
-  .server-label {
-    font-family: 'Oswald', sans-serif;
-    font-size: 11px;
-    letter-spacing: 4px;
-    color: var(--ink-faded);
-    font-weight: 600;
-    margin-bottom: 16px;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .server-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--ink-faded);
-  }
-
-  .banner-link {
-    display: block;
-    text-decoration: none;
-    border: 1px solid var(--ink-faded);
-    overflow: hidden;
-    transition: box-shadow 0.2s, border-color 0.2s;
+  .region {
+    border: 1px solid var(--ink);
+    padding: 16px;
+    background: rgba(255, 252, 240, 0.3);
     position: relative;
   }
 
-  .banner-link:hover {
-    border-color: var(--blood);
-    box-shadow: 0 0 0 2px var(--blood), 4px 4px 0 var(--shadow);
-  }
-
-  .banner-link img {
-    display: block;
-    width: 100%;
-    height: auto;
-    max-height: 260px;
-    object-fit: cover;
-    filter: sepia(20%) contrast(1.05);
-    transition: filter 0.3s;
-  }
-
-  .banner-link:hover img {
-    filter: sepia(5%) contrast(1.08);
-  }
-
-  .banner-caption {
-    background: var(--ink);
-    color: var(--paper);
-    font-family: 'Special Elite', monospace;
-    font-size: 11px;
-    letter-spacing: 2px;
-    padding: 8px 14px;
+  .region-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed var(--ink-faded);
   }
 
-  .banner-caption .arrow {
-    color: var(--blood);
-    font-size: 14px;
-    letter-spacing: 0;
-  }
-
-  /* MANUAL LINK */
-  .manual-link-block {
-    margin-top: 20px;
-    padding-top: 20px;
-    border-top: 1px dashed var(--ink-faded);
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-
-  .manual-link-label {
-    font-family: 'Special Elite', monospace;
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: var(--ink-faded);
-    flex-shrink: 0;
-  }
-
-  .manual-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+  .region-name {
     font-family: 'Oswald', sans-serif;
-    font-size: 13px;
+    font-size: 20px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--paper);
-    background: var(--blood);
-    padding: 8px 18px;
-    text-decoration: none;
-    border: 2px solid var(--blood);
-    transition: background 0.2s, color 0.2s;
     font-weight: 600;
   }
 
-  .manual-link:hover {
-    background: transparent;
-    color: var(--blood);
+  .region-status {
+    font-family: 'Special Elite', monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    padding: 2px 8px;
+    border: 1px solid;
   }
 
-  /* FOOTER */
+  .status-empire { color: var(--blood); border-color: var(--blood); }
+  .status-occupied { color: var(--gold); border-color: var(--gold); }
+  .status-free { color: #2d5a3a; border-color: #2d5a3a; }
+  .status-cold { color: var(--ink-soft); border-color: var(--ink-soft); }
+
+  .region-desc { font-size: 14px; margin-bottom: 10px; color: var(--ink-soft); }
+
+  .starters {
+    font-family: 'Special Elite', monospace;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    line-height: 1.7;
+    color: var(--ink);
+    background: rgba(20, 16, 12, 0.04);
+    padding: 8px 10px;
+    border-left: 2px solid var(--blood);
+  }
+
+  .starters b { color: var(--blood); }
+
+  /* ─────────── CLASSIFICATION TABLE ─────────── */
+  .class-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  .class-card {
+    border: 1px solid var(--ink);
+    padding: 14px 16px;
+    background: rgba(255, 252, 240, 0.3);
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 14px;
+    align-items: start;
+  }
+
+  .class-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--blood);
+    border-right: 2px solid var(--ink);
+    padding-right: 14px;
+    line-height: 1.2;
+  }
+
+  .class-body { font-size: 14px; line-height: 1.6; }
+  .class-body b { color: var(--ink); font-family: 'Oswald', sans-serif; letter-spacing: 1px; }
+
+  /* ─────────── PRICE TABLE ─────────── */
+  .price-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 14px;
+  }
+
+  .price-table th, .price-table td {
+    padding: 8px 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--ink-faded);
+  }
+
+  .price-table th {
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: rgba(20, 16, 12, 0.08);
+    color: var(--ink);
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .price-table tr:hover { background: rgba(122, 24, 24, 0.04); }
+
+  .price-table .crown { color: var(--blood); font-family: 'Special Elite', monospace; }
+  .price-table .chain { color: var(--gold); font-family: 'Special Elite', monospace; }
+
+  /* ─────────── OOC BLOCK ─────────── */
+  .ooc-block {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin: 18px 0;
+  }
+
+  .ooc-state {
+    border: 2px solid var(--ink);
+    padding: 16px 18px;
+    position: relative;
+  }
+
+  .ooc-state.locked {
+    border-color: #2d5a3a;
+    background: rgba(45, 90, 58, 0.05);
+  }
+
+  .ooc-state.unlocked {
+    border-color: var(--blood);
+    background: rgba(122, 24, 24, 0.06);
+  }
+
+  .ooc-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px;
+    letter-spacing: 4px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ooc-state.locked .ooc-label { color: #2d5a3a; }
+  .ooc-state.unlocked .ooc-label { color: var(--blood); }
+
+  .ooc-cmd {
+    display: inline-block;
+    font-family: 'Special Elite', monospace;
+    font-size: 13px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 3px 10px;
+    margin: 6px 0;
+    letter-spacing: 1px;
+  }
+
+  /* ─────────── NPC CARDS ─────────── */
+  .npc-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 14px;
+  }
+
+  .npc {
+    border: 1px solid var(--ink);
+    padding: 14px 16px;
+    background: rgba(255, 252, 240, 0.3);
+    border-left: 4px solid var(--ink);
+  }
+
+  .npc.crown { border-left-color: var(--blood); }
+  .npc.chain { border-left-color: #2d5a3a; }
+  .npc.market { border-left-color: var(--gold); }
+
+  .npc-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 4px;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .npc-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .npc-role {
+    font-family: 'Special Elite', monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--ink-faded);
+  }
+
+  .npc.crown .npc-role { color: var(--blood); }
+  .npc.chain .npc-role { color: #2d5a3a; }
+  .npc.market .npc-role { color: var(--gold); }
+
+  .npc-desc { font-size: 14px; color: var(--ink-soft); margin-top: 6px; }
+
+  /* ─────────── CHECKLIST ─────────── */
+  .checklist {
+    list-style: none;
+    margin: 14px 0;
+    padding: 0;
+  }
+
+  .checklist li {
+    padding: 10px 0 10px 36px;
+    border-bottom: 1px dashed var(--ink-faded);
+    position: relative;
+    font-size: 15px;
+  }
+
+  .checklist li:last-child { border-bottom: none; }
+
+  .checklist li::before {
+    content: '☐';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    font-size: 22px;
+    color: var(--blood);
+    font-family: 'Special Elite', monospace;
+  }
+
+  .checklist li b {
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 1px;
+    color: var(--ink);
+  }
+
+  /* ─────────── FOOTER ─────────── */
   footer {
-    margin-top: 48px;
-    padding-top: 20px;
+    margin-top: 60px;
+    padding-top: 24px;
     border-top: 3px double var(--ink);
     text-align: center;
     font-family: 'Special Elite', monospace;
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: 2px;
     color: var(--ink-faded);
     line-height: 1.8;
   }
 
-  /* ANIMATIONS */
+  footer .quote {
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink-soft);
+    letter-spacing: 0;
+    max-width: 540px;
+    margin: 0 auto 20px;
+    line-height: 1.6;
+  }
+
+  footer .quote::before { content: '"'; color: var(--blood); font-size: 28px; line-height: 0; vertical-align: -8px; margin-right: 4px; }
+  footer .quote::after { content: '"'; color: var(--blood); font-size: 28px; line-height: 0; vertical-align: -8px; margin-left: 4px; }
+
+  /* ─────────── DESKTOP ─────────── */
+  @media (min-width: 720px) {
+    .page { padding: 40px 32px 100px; }
+    .region-grid { grid-template-columns: 1fr 1fr; }
+    .class-grid { grid-template-columns: 1fr 1fr; }
+    .ooc-block { grid-template-columns: 1fr 1fr; }
+    .npc-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ─────────── PRINT ─────────── */
+  @media print {
+    body { background: white; }
+    body::before { display: none; }
+  }
+
+  /* ─────────── ANIMATIONS ─────────── */
   @keyframes stamp-in {
     0% { opacity: 0; transform: rotate(20deg) scale(1.4); }
     60% { opacity: 1; transform: rotate(6deg) scale(0.95); }
     100% { opacity: 0.85; transform: rotate(8deg) scale(1); }
   }
 
+  .stamp-mark { animation: stamp-in 0.8s ease-out 0.3s backwards; }
+
   @keyframes fade-up {
     from { opacity: 0; transform: translateY(12px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  header { animation: fade-up 0.6s ease-out backwards; }
+  header, section { animation: fade-up 0.6s ease-out backwards; }
+  section:nth-of-type(1) { animation-delay: 0.1s; }
+  section:nth-of-type(2) { animation-delay: 0.2s; }
+  section:nth-of-type(3) { animation-delay: 0.3s; }
 </style>
 </head>
 <body>
 
 <div class="page">
 
-  <header>
-    <div class="stamp-row">
-      <span class="classification">RESTRICTED</span>
-      <div class="doc-id">BRIEFING SHEET<br>YEAR 12</div>
-    </div>
-    <div class="stamp-mark">CONSCRIPT'S<br>BRIEFING</div>
-    <h1>War of the Indigo Crown<span class="accent">— INITIAL BRIEFING —</span></h1>
-  </header>
-
-  <div class="briefing">
-    <div class="briefing-label">§ Situation Report</div>
-    <p>You're being drafted. Twelve years into a war you didn't start. The Indigo Crown holds Kanto, Johto, occupied Hoenn, and collaborator Kalos. The <strong>Severed Chain</strong> — the rebellion — operates from Sinnoh's mountains and from cells in every other region. Unova sits on a knife's edge. You'll pick a region, a side, and two starter Pokémon — and the world will pick what to do to you next.</p>
-    <p>This guide explains how the RP works. Read what you need; skip what you don't.</p>
+<header>
+  <div class="stamp-row">
+    <span class="classification">RESTRICTED</span>
+    <div class="doc-id">FM-IC/12<br>YEAR 12 — REVISED</div>
   </div>
+  <div class="stamp-mark">CONSCRIPT'S<br>FIELD MANUAL</div>
+  <h1>War of the Indigo Crown<span class="accent">— USER GUIDE —</span></h1>
+  <p class="subtitle">A Pokémon wartime AU. Empire vs. Rebellion. You are eighteen.</p>
+</header>
 
-  <div class="dismissal">
-    Yeah I suck at the usual JAI bots — if you want people who are way better than me, check out the server below. But for now it's back to RPG bots. Have fun!
-  </div>
+<div class="intro">
+  <p>You're being drafted. Twelve years into a war you didn't start. The Indigo Crown holds Kanto, Johto, occupied Hoenn, and collaborator Kalos. The <b>Severed Chain</b> — the rebellion — operates from Sinnoh's mountains and from cells in every other region. Unova sits on a knife's edge. You'll pick a region, a side, and two starter Pokémon — and the world will pick what to do to you next.</p>
+  <p>This guide explains how the RP works. Read what you need; skip what you don't.</p>
+</div>
 
-  <div class="server-block">
-    <div class="server-label">Recommended Server</div>
-    <a class="banner-link" href="https://janitorai.com" target="_blank" rel="noopener noreferrer">
-      <img src="https://ella.janitorai.com/media-approved/wjb2K76yR3182PIhOa4F-.webp" alt="Server Banner">
-      <div class="banner-caption">
-        <span>VISIT SERVER — BETTER BOTS AWAIT</span>
-        <span class="arrow">→</span>
+<!-- ─────────── 01 SETUP ─────────── -->
+<section>
+  <h2><span class="num">§ 01</span><span class="name">Setup</span></h2>
+  <p class="section-tag">Before scene one — six choices, in order.</p>
+
+  <ul class="checklist">
+    <li><b>Region.</b> Six options. Each has different draft procedures, factional pressures, and starter pools. Where you're born shapes everything.</li>
+    <li><b>Faction.</b> Crown (Empire) or Chain (Rebellion). Some regions default one way (Kanto/Johto → Crown, Sinnoh → Chain), but you can choose against default — at a cost.</li>
+    <li><b>Two starters.</b> From your regional pool of six, classified <i>Air Force / Tank / Espionage / Navy / Artillery / Support</i>. You pick two. Only two.</li>
+    <li><b>Branch preference.</b> Final assignment is decided by aptitude testing during basic, but your preference matters and your starters bias the result.</li>
+    <li><b>Death Lock state.</b> Default LOCKED. See § 04.</li>
+    <li><b>Character sheet.</b> Name, age 18, appearance, one personal motive. The bot doesn't write your character — you do.</li>
+  </ul>
+</section>
+
+<!-- ─────────── 02 REGIONS ─────────── -->
+<section>
+  <h2><span class="num">§ 02</span><span class="name">Regions of Origin</span></h2>
+  <p class="section-tag">Six starting points — six versions of being eighteen in a war.</p>
+
+  <div class="region-grid">
+    <div class="region">
+      <div class="region-header">
+        <span class="region-name">Kanto</span>
+        <span class="region-status status-empire">EMPIRE — HEARTLAND</span>
       </div>
-    </a>
+      <p class="region-desc">The Crown's capital region. Stable, surveilled, dehumanized processing at Indigo Plateau Citadel. Defection is hard — there's almost no functional Chain cell here.</p>
+      <div class="starters">
+        <b>STARTERS:</b> Charizard / Kangaskhan / Gengar / Gyarados / Blastoise / Wigglytuff
+      </div>
+    </div>
 
-    <div class="manual-link-block">
-      <span class="manual-link-label">Full Field Manual:</span>
-      <a class="manual-link" href="https://claude.ai/share/war-of-the-indigo-crown.html" target="_blank" rel="noopener noreferrer">
-        ☐ Read the Full Manual →
-      </a>
+    <div class="region">
+      <div class="region-header">
+        <span class="region-name">Johto</span>
+        <span class="region-status status-empire">EMPIRE — ANNEXED</span>
+      </div>
+      <p class="region-desc">Conquered Year 2. Two generations under Crown rule. Resentment runs deep but the Loyalists cell is broken. Tyranitar and Scizor are politically loaded picks — the Crown reads them as either trusted-loyalist material or someone to use up quickly.</p>
+      <div class="starters">
+        <b>STARTERS:</b> Skarmory / Tyranitar / Scizor / Lanturn / Feraligatr / Blissey
+      </div>
+    </div>
+
+    <div class="region">
+      <div class="region-header">
+        <span class="region-name">Hoenn</span>
+        <span class="region-status status-occupied">OCCUPIED — INSURGENCY</span>
+      </div>
+      <p class="region-desc">The bloodiest region. Six years of Crown occupation, six years of Tide Brotherhood resistance. 22% of Crown Hoenn draftees vanish in their first year. Defection is a real option here.</p>
+      <div class="starters">
+        <b>STARTERS:</b> Salamence / Metagross or Aggron / Sceptile / Sharpedo / Camerupt / Gardevoir
+      </div>
+    </div>
+
+    <div class="region">
+      <div class="region-header">
+        <span class="region-name">Sinnoh</span>
+        <span class="region-status status-free">FREE — REBEL HOLD</span>
+      </div>
+      <p class="region-desc">The only fully free region. The Mt. Coronet Free Companies broke the Crown invasion at Year 8. Volunteer-driven enlistment; refusing service is socially marked.</p>
+      <div class="starters">
+        <b>STARTERS:</b> Garchomp / Rhyperior / Toxicroak / Empoleon / Magnezone / Roserade
+      </div>
+    </div>
+
+    <div class="region">
+      <div class="region-header">
+        <span class="region-name">Unova</span>
+        <span class="region-status status-cold">COLD WAR — CONTESTED</span>
+      </div>
+      <p class="region-desc">Industrial cold war. Both factions operate openly in the cities. At 18 you'll be approached by a Crown recruiter, a Chain handler, and a Black Market broker in the same week. Maximum optionality, maximum danger.</p>
+      <div class="starters">
+        <b>STARTERS:</b> Braviary / Golurk / Zoroark / Jellicent / Hydreigon / Audino
+      </div>
+    </div>
+
+    <div class="region">
+      <div class="region-header">
+        <span class="region-name">Kalos</span>
+        <span class="region-status status-occupied">COLLABORATOR REGIME</span>
+      </div>
+      <p class="region-desc">Surrendered Year 9. Theatrically normal — cafes, fashion, Lumiose Shadow assassinations weekly. Three real paths: collaborate, resist, or smuggle yourself to Sinnoh.</p>
+      <div class="starters">
+        <b>STARTERS:</b> Noivern / Avalugg / Greninja / Milotic / Clawitzer / Sylveon
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── 03 CLASSIFICATIONS ─────────── -->
+<section>
+  <h2><span class="num">§ 03</span><span class="name">Six Branches</span></h2>
+  <p class="section-tag">Universal classification doctrine — both factions use it.</p>
+
+  <div class="class-grid">
+    <div class="class-card">
+      <div class="class-name">Air Force</div>
+      <div class="class-body"><b>FAST STRIKE.</b> Aerial combat, recon, high-altitude bombing. Most prestigious branch. Highest casualties. Pilots mark kills on harnesses (Crown) or refuse to (Chain).</div>
+    </div>
+    <div class="class-card">
+      <div class="class-name">Tank</div>
+      <div class="class-body"><b>FRONT LINE.</b> Walking armor, position-holders, breach assets. Unglamorous, indispensable. Tanks need escorts — alone, they're target practice.</div>
+    </div>
+    <div class="class-card">
+      <div class="class-name">Espionage</div>
+      <div class="class-body"><b>GHOST WAR.</b> Infiltration, sabotage, assassination. Smallest branch by headcount, largest by impact. Highest desertion rate. The work breaks people.</div>
+    </div>
+    <div class="class-card">
+      <div class="class-name">Navy</div>
+      <div class="class-body"><b>BLUE WATER.</b> Maritime combat, coastal defense, submarine ops. The Tide Brotherhood is the most successful insurgent fleet in history.</div>
+    </div>
+    <div class="class-card">
+      <div class="class-name">Artillery</div>
+      <div class="class-body"><b>SIEGE FIRE.</b> Long-range damage, area denial, saturation bombardment. Loud, visible, second-highest casualties. Three regional anchors are legendaries.</div>
+    </div>
+    <div class="class-card">
+      <div class="class-name">Support</div>
+      <div class="class-body"><b>FIELD MEDIC.</b> Healing, screens, status removal, morale. High-priority enemy target — both sides train snipers to kill Support first. Wear no rank in the field.</div>
     </div>
   </div>
 
-  <footer>
-    FM-IC/12 · YEAR 12 REVISED · DESTROY IF CAPTURED
-  </footer>
+  <div class="box box-tip">
+    <b>Cross-class is real.</b> Many Pokémon qualify for two branches. A Charizard can serve Air Force or Artillery; a Tyranitar straddles Tank and Artillery. Branch transfers are possible but slow (Crown) or informal (Chain).
+  </div>
+</section>
+
+<!-- ─────────── 04 DEATH LOCK ─────────── -->
+<section>
+  <h2><span class="num">§ 04</span><span class="name">The OOC Death Lock</span></h2>
+  <p class="section-tag">The single most important mechanic. Read this twice.</p>
+
+  <p>This RP has explicit consent for lethal outcomes. Two states. Default is locked. You toggle with a bracketed OOC line.</p>
+
+  <div class="ooc-block">
+    <div class="ooc-state locked">
+      <div class="ooc-label">◆ LOCKED <span style="color: var(--ink-faded); letter-spacing: 1px;">(default)</span></div>
+      <p>You cannot die. Your party Pokémon cannot permanently die. Wounds happen, captures happen, fainting happens. But nothing is final.</p>
+      <div class="ooc-cmd">[OOC: lock death]</div>
+    </div>
+
+    <div class="ooc-state unlocked">
+      <div class="ooc-label">◆ UNLOCKED</div>
+      <p>Death is on the table. You can die. Party Pokémon can die. Consequences apply — but death follows logically from the fight, never randomly for shock value.</p>
+      <div class="ooc-cmd">[OOC: unlock death]</div>
+    </div>
+  </div>
+
+  <div class="box box-warning">
+    <b>NPC Pokémon and NPC characters can always die regardless of lock state.</b> The lock protects you and your party only. The war does not pause for you.
+  </div>
+</section>
+
+<!-- ─────────── 05 COMBAT ─────────── -->
+<section>
+  <h2><span class="num">§ 05</span><span class="name">Combat & Capture</span></h2>
+  <p class="section-tag">Narrative-first. Mechanics-informed. Canon types apply.</p>
+
+  <h3>How Fights Resolve</h3>
+  <p>You declare intent and tactic. The bot narrates. Outcome is shaped by: positioning, type matchups, handler experience, Pokémon condition, and the dice of chaos that real fights bring. You don't declare hits or misses — the bot does, with reasoning embedded in the narration.</p>
+
+  <h3>Fainting vs. Dying</h3>
+  <p>A Pokémon at 0 HP is <b>fainted</b>, not dead, by default. Death requires the OOC lock unlocked AND a finishing action — never silent, never accidental for your party while you're conscious. NPC Pokémon can die at any time.</p>
+
+  <h3>Capturing the Wild</h3>
+  <p>Capture resolves the same way combat does — narrative-first, mechanics-informed. Weaken the target, apply status if you can, throw the appropriate ball. The bot narrates the wobble count and outcome based on six factors:</p>
+
+  <div class="box">
+    <p style="margin-bottom: 6px;"><b>1. HP REMAINING.</b> Below 30% is the doctrinal sweet spot. Below 10% risks killing the target before the ball lands.</p>
+    <p style="margin-bottom: 6px;"><b>2. STATUS.</b> Sleep and Freeze roughly double catch rate. Paralysis, Poison, Burn give smaller bonuses. Sleep-inducers are Black Market premium.</p>
+    <p style="margin-bottom: 6px;"><b>3. BALL.</b> Pokéball baseline. Great ~1.5x. Ultra ~2x — and the strongest working capture tech in the war. Specialty balls (Quick, Dusk, Net, Timer, Heal, Repeat) apply situational multipliers.</p>
+    <p style="margin-bottom: 6px;"><b>4. RARITY.</b> Common (Pidgey, Rattata) → high rate. Standard (mid-route evolved) → moderate. Rare (Larvitar, Bagon, Gible — pseudo pre-evolutions) → low. Pseudo-legendary fully evolved (Tyranitar, Salamence, Garchomp) → events handlers tell stories about for years. Legendary → impossible with standard tech.</p>
+    <p style="margin-bottom: 6px;"><b>5. ENVIRONMENT.</b> Caves favor Dusk. Submerged combat favors Net. Long fights favor Timer. Off-doctrine ball ≈ 25% rate penalty.</p>
+    <p style="margin-bottom: 0;"><b>6. HANDLER FATIGUE.</b> Capture precision degrades after extended combat. Crown doctrine recommends fewer than 3 attempts per operation.</p>
+  </div>
+
+  <h3>Outcomes</h3>
+  <p>The bot picks one of these — you don't roll:</p>
+  <ul class="checklist">
+    <li><b>Immediate catch.</b> Rare. Critical-low HP + status + low rarity + correct ball.</li>
+    <li><b>Three-wobble catch.</b> Standard success. The default.</li>
+    <li><b>Late breakout.</b> Ball nearly held; target emerges weakened and angry. Re-engage. Resistance is now elevated — second attempts are harder.</li>
+    <li><b>Immediate breakout.</b> Target was too healthy or too rare. Standard outcome on first-attempt against pseudo-legendaries.</li>
+    <li><b>Ball failure.</b> ~1/200 standard balls misfire. Knockoffs: 1/30. The ball ruptures; target may flee or attack.</li>
+    <li><b>Escaped.</b> Target uses the breakout window to flee. Recapture within 24 hours has a malus — wild Pokémon learn.</li>
+  </ul>
+
+  <div class="box box-tip">
+    <b>The evolution path.</b> Catching a wild Tyranitar is a story. Catching a wild Larvitar and raising it to Tyranitar over 18 months of deployment is what most veterans actually do. A Pokémon raised through evolution has a tighter bond than one captured at full power — and a tighter bond resists hostile capture better.
+  </div>
+
+  <div class="box box-warning">
+    <b>You cannot capture a bonded Pokémon.</b> The bond resists, regardless of HP, status, or ball quality. To take a bonded enemy's Pokémon non-lethally requires Tier-V contraband (the Bind Ball, which damages the Pokémon) or the bond-holder's death.
+  </div>
+
+  <h3>The Kill-and-Free Rule</h3>
+  <p>When you kill an enemy combatant, their Pokéballs become <i>your</i> problem.</p>
+
+  <div class="box">
+    <p><b style="color: var(--blood);">CROWN DOCTRINE:</b> Destroy the balls. An enemy's Pokémon is contaminated and cannot be safely re-bonded.</p>
+    <p style="margin-bottom: 0;"><b style="color: #2d5a3a;">CHAIN DOCTRINE:</b> Release the Pokémon. Forcing a re-bond is the same crime the Crown commits with conscription. The freed Pokémon may flee, attack, mourn the body, or — rarely — imprint on you.</p>
+  </div>
+
+  <div class="box box-warning">
+    Doing the opposite of your faction's doctrine has social consequences. Crown loyalists who release prisoners are reported. Rebels who keep killed enemies' Pokémon are accused of being Crown sympathizers.
+  </div>
+</section>
+
+<!-- ─────────── 06 ECONOMY ─────────── -->
+<section>
+  <h2><span class="num">§ 06</span><span class="name">Party, Currency, Items</span></h2>
+  <p class="section-tag">The shape of survival.</p>
+
+  <h3>Party Size</h3>
+  <p>Standard cap is 6 Pokémon. Draftees start with 2 starters and capture or recruit the rest. Expansion beyond 6 requires permits — Crown carry permits or Black Market carrier tags — and gets expensive fast.</p>
+
+  <table class="price-table">
+    <thead>
+      <tr><th>Slot</th><th>Crown ₵</th><th>Chain (Black Market) ₵</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>7th</td><td class="crown">800</td><td class="chain">1,200</td></tr>
+      <tr><td>8th</td><td class="crown">2,000</td><td class="chain">3,000</td></tr>
+      <tr><td>9th</td><td class="crown">5,000</td><td class="chain">8,000</td></tr>
+      <tr><td>10th</td><td class="crown">12,000</td><td class="chain">20,000</td></tr>
+      <tr><td>11+</td><td colspan="2" style="text-align: center; color: var(--blood);">Special command authorization only.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Currency: The Imperial Crown (₵)</h3>
+  <p>One Crown ≈ a roadside meal. Income: soldier salary (₵50/wk Crown), irregular Chain stipends, bounties (₵200–5,000 per officer kill), salvage, and Black Market trades.</p>
+
+  <h3>Item Tiers</h3>
+  <table class="price-table">
+    <thead>
+      <tr><th>Tier</th><th>Examples</th><th>Access</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><b>I — Common</b></td><td>Pokéballs, Potions, Antidotes</td><td>Any draftee</td></tr>
+      <tr><td><b>II — Standard</b></td><td>Great Balls, Super Potions, Field Rations</td><td>After first deployment</td></tr>
+      <tr><td><b>III — Restricted</b></td><td>Ultra Balls, Hyper Potions, Revives, basic held items</td><td>Officer rank or vendor rep</td></tr>
+      <tr><td><b>IV — Rare</b></td><td>Mega Stones, TMs, evolution stones, specialty balls in bulk</td><td>Special authorization</td></tr>
+      <tr><td><b>V — Contraband</b></td><td>Suppression collars, Bind Balls, anti-bond serums</td><td>Storyline only</td></tr>
+    </tbody>
+  </table>
+
+  <div class="box box-tip">
+    <b>Revives work on fainted, not dead.</b> Once a Pokémon dies (with the lock unlocked), no item brings it back. The bond ends.
+  </div>
+</section>
+
+<!-- ─────────── 07 PEOPLE ─────────── -->
+<section>
+  <h2><span class="num">§ 07</span><span class="name">People You'll Meet</span></h2>
+  <p class="section-tag">A non-exhaustive cast. The world has more.</p>
+
+  <div class="npc-grid">
+    <div class="npc crown">
+      <div class="npc-head">
+        <span class="npc-name">Marshal Corvane Ash</span>
+        <span class="npc-role">CROWN — HIGH COMMAND</span>
+      </div>
+      <p class="npc-desc">47, white-haired, Western Theater Commander. The most ethical of the five living Marshals — refuses reprisal killings, has been overruled twice. Bonded to Mega Latios. Possibly questioning his loyalty.</p>
+    </div>
+
+    <div class="npc chain">
+      <div class="npc-head">
+        <span class="npc-name">Captain Reza Ironwood</span>
+        <span class="npc-role">CHAIN — FREE COMPANIES</span>
+      </div>
+      <p class="npc-desc">39, one-eyed, Sinnoh field commander. Hoennan refugee. Doesn't romanticize the rebellion. Searching for the Crown handler who killed her sister at Snowpoint three years ago.</p>
+    </div>
+
+    <div class="npc crown">
+      <div class="npc-head">
+        <span class="npc-name">Sgt. Mira Vex</span>
+        <span class="npc-role">CROWN — DIRECT CO</span>
+      </div>
+      <p class="npc-desc">26, Air Wing squad leader. Sarcastic, blunt, fair. Has buried four recruits in two years. Reads pre-war history in private. Two missions from discharge eligibility.</p>
+    </div>
+
+    <div class="npc chain">
+      <div class="npc-head">
+        <span class="npc-name">Lt. Echo</span>
+        <span class="npc-role">CHAIN — URBAN HANDLER</span>
+      </div>
+      <p class="npc-desc">Kalosian defector. Speaks four languages, lies fluently in all of them. Bonded Zoroark — but the illusion ability is showing strain. She isn't telling her command.</p>
+    </div>
+
+    <div class="npc market">
+      <div class="npc-head">
+        <span class="npc-name">The Black Hand</span>
+        <span class="npc-role">MARKET — INFO BROKER</span>
+      </div>
+      <p class="npc-desc">Identity unknown. Sells information to both factions. Both factions have tried to kill them. Building toward something — pre-war research, biological samples, Mega Stone fragments.</p>
+    </div>
+
+    <div class="npc crown">
+      <div class="npc-head">
+        <span class="npc-name">Nyx Salazar</span>
+        <span class="npc-role">CROWN — RIVAL DRAFTEE</span>
+      </div>
+      <p class="npc-desc">18, your peer, picks the most prestigious starters in your region. Smart, charismatic, casually cruel. The friend you could've had if they were less broken. Future Marshal in 20 years if you both survive.</p>
+    </div>
+
+    <div class="npc">
+      <div class="npc-head">
+        <span class="npc-name">The Iron Saint</span>
+        <span class="npc-role">CHAIN — SUPREME COMMANDER</span>
+      </div>
+      <p class="npc-desc">50–60, real name unknown. Mismatched plate from Crown officers killed at Mt. Coronet. Possibly bonded to Lugia. Quietly dying. The succession question is the rebellion's loudest crisis.</p>
+    </div>
+
+    <div class="npc">
+      <div class="npc-head">
+        <span class="npc-name">Dr. Elaria Vaeleth</span>
+        <span class="npc-role">CROWN — BOND RESEARCHER</span>
+      </div>
+      <p class="npc-desc">51, lead architect of the Crown's binding research. Produced the Bind Ball and the legendary suppression collars. Bonded to a Mega Gardevoir she genuinely loves. The war's quietest monster.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── 08 LEGENDARIES ─────────── -->
+<section>
+  <h2><span class="num">§ 08</span><span class="name">Legendaries & Mythicals</span></h2>
+  <p class="section-tag">Not draft-distributed. State assets, revered allies, or forces of their own.</p>
+
+  <p>Legendaries don't bond casually — they choose. Standard Pokéballs don't capture them, and even Ultra Balls fail against legendary-tier resistance. There are exactly two paths: a <b>willing bond</b> (the legendary chooses you), or <b>Tier-V contraband</b> (the Bind Ball, which overrides bonds rather than resistance — and only works on legendaries that were already bonded to someone else). Public legendary handlers have an estimated survival rate of 18 months.</p>
+  <p style="font-size: 14px; color: var(--ink-soft); font-style: italic;">The Master Ball is myth. Pre-war Silph blueprint, never reached working stage; the binding mechanism would require power densities that destroy the ball at activation. Both factions still research it. Both still fail. Crown propaganda claims a working model exists at Indigo Citadel — captured intelligence indicates this is a deliberate lie.</p>
+
+  <div class="box">
+    <p><b style="color: var(--blood);">CROWN-CONTROLLED:</b> Mewtwo (classified), Latios, Heatran, Reshiram (contested), Xerneas (collaborator regime).</p>
+    <p><b style="color: #2d5a3a;">CHAIN-ALIGNED:</b> Lugia (Mt. Coronet), Suicune (roams Johto refusing all sides), Latias (Tide Brotherhood), Zekrom (contested), Yveltal (Lumiose Shadow's deniable asset).</p>
+    <p style="margin-bottom: 0;"><b style="color: var(--ink-faded);">UNCONFIRMED / NEUTRAL:</b> Mew, Celebi, Jirachi, Manaphy, Darkrai, Shaymin, Arceus (not sighted in any verifiable form since before the war), Victini, Keldeo, Meloetta, Genesect, Diancie, Hoopa (rumored Black Market involvement), Volcanion, Zygarde.</p>
+  </div>
+</section>
+
+<!-- ─────────── 09 TIPS ─────────── -->
+<section>
+  <h2><span class="num">§ 09</span><span class="name">Field Notes for New Conscripts</span></h2>
+  <p class="section-tag">Things you'll wish you knew earlier.</p>
+
+  <ul class="checklist">
+    <li><b>You can lie at the recruiter's desk.</b> The Kalos opening scenario explicitly invites it. Most regions implicitly allow it. Forged identities are a real Black Market product.</li>
+    <li><b>The lock state is yours.</b> No one will pressure you to unlock. If you want safe stakes, stay locked and tell stories about the world. If you want consequence, unlock — but expect the bot to take it seriously.</li>
+    <li><b>Your starters are not your endpoint.</b> Two is a beginning. Capture, recruit, and let your party shape itself by who survives and who chooses you.</li>
+    <li><b>Branch culture matters.</b> Air Force is glamorous and gets you killed. Support saves more lives than it loses. Espionage breaks you. Pick what you want to live as, not just fight as.</li>
+    <li><b>Talk to civilians.</b> The war isn't just battles. The orphan in Cinnabar, the bartender in Castelia, the fisherwoman at Slateport pier — these are storylines.</li>
+    <li><b>Black Market reputation is real and slow.</b> First transactions are testers. Burn a vendor and the entire network closes to you within days.</li>
+    <li><b>NPCs have hooks.</b> Reza is hunting someone. Mira is considering desertion. Echo's Zoroark is failing. Vaeleth has research she hasn't destroyed. Notice them. They're seeds.</li>
+    <li><b>Retreat is honorable.</b> Both factions retreat constantly. The war has been twelve years because both sides retreat well. Surviving a battle by withdrawing is not failure — it's how veterans become veterans.</li>
+  </ul>
+</section>
+
+<footer>
+  <p class="quote">You will lose people. You will lose Pokémon. You may lose yourself. Choose anyway, if you can.</p>
+  <p>— CAPT. REZA IRONWOOD, MT. CORONET FREE COMPANIES</p>
+  <p style="margin-top: 24px;">END OF MANUAL · DESTROY IF CAPTURED</p>
+</footer>
 
 </div>
 
